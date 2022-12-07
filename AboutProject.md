@@ -1,7 +1,7 @@
 NOTE: We will only post the first interface and the code for the arduino from the Slave circuit
 
 # HammingCodeGenerator
-This Hamming code generator is a final project for the course of Data Communication
+This Hamming code generator is a final project for the course of Data Communication (2022)
 
 This project is basically as the name says but the purpose of the project is that the Hamming code generated in PC1 will be transmitted via Bluetooth to another PC2
 
