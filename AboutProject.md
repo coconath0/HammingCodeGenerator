@@ -1,3 +1,5 @@
+NOTE: We will only post the first interface and the code for the arduino from the Slave circuit
+
 # HammingCodeGenerator
 This Hamming code generator is a final project for the course of Data Communication
 
