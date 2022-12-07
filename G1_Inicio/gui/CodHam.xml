@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog Color="[0.976 0.957 0.961]" HPosition="center" Name="CodHam" Position="[0 729 655 351]" Resize="off" VPosition="center" windowStyle="normal">
+    <GlobalSrc>%
+% El código fuente escrito aquí será ejecutado cuando
+% la ventana se haga visible. Funciona como el evento 'onLoad' de otros lenguajes.
+</GlobalSrc>
+    <uiControl class="buttonCtrl" BackgroundColor="[0.784 0.722 0.859]" FontAngle="normal" FontName="Consolas" FontSize="10" FontWeight="bold" ForegroundColor="[0.439 0.345 0.486]" GenerateCallBack="true" Name="Button_1" Position="[186 140 266 32]" String="Generar" TooltipString="">pkg load arduino;
+a = arduino;
+num1 = get(CodHam.D1,'String');%recibe num
+num3 = get(CodHam.D2,'String');
+num5 = get(CodHam.D3,'String');
+num7 = get(CodHam.D4,'String');
+num9 = get(CodHam.D5,'String');
+num11 = get(CodHam.D6,'String');
+num13 = get(CodHam.D7,'String');
+
+num2 = str2num(num1);%convierte num
+num4 = str2num(num3);
+num6 = str2num(num5);
+num8 = str2num(num7);
+num10 = str2num(num9);
+num12 = str2num(num11);
+num14 = str2num(num13);
+mensaje =&quot;&quot;
+%set(CodHam.msj1, 'String', mensaje);
+%Ahora, esos números obtenidos lo ponemos en una cadena
+if((num2!= 1 &amp;&amp; num2!=0)||(num4!= 1 &amp;&amp; num4!=0)||(num6!= 1 &amp;&amp; num6!=0)||(num8!= 1 &amp;&amp; num8!=0)||(num10!= 1 &amp;&amp; num10!=0)||(num12!= 1 &amp;&amp; num12!=0)||(num14!= 1 &amp;&amp; num14!=0))
+mensaj = &quot;Check if digits are written correctly( 1 or 0 )&quot;
+set(CodHam.msj, 'String', mensaj);
+set(CodHam.N1, 'String',&quot;0&quot;);
+set(CodHam.N2, 'String',&quot;0&quot;);
+set(CodHam.N3, 'String',&quot;0&quot;);
+set(CodHam.N4, 'String',&quot;0&quot;);
+set(CodHam.N5, 'String',&quot;0&quot;);
+set(CodHam.N6, 'String',&quot;0&quot;);
+set(CodHam.N7, 'String',&quot;0&quot;);
+set(CodHam.N8, 'String',&quot;0&quot;);
+set(CodHam.N9, 'String',&quot;0&quot;);
+set(CodHam.N10, 'String',&quot;0&quot;);
+set(CodHam.N11, 'String',&quot;0&quot;);
+writeDigitalPin(a,&quot;d13&quot;,0);
+writeDigitalPin(a,&quot;d12&quot;,0);
+writeDigitalPin(a,&quot;d11&quot;,0);
+writeDigitalPin(a,&quot;d10&quot;,0);
+writeDigitalPin(a,&quot;d9&quot;,0);
+writeDigitalPin(a,&quot;d8&quot;,0);
+writeDigitalPin(a,&quot;d7&quot;,0);
+writeDigitalPin(a,&quot;d6&quot;,0);
+writeDigitalPin(a,&quot;d5&quot;,0);
+writeDigitalPin(a,&quot;d4&quot;,0);
+writeDigitalPin(a,&quot;d3&quot;,0);
+
+else
+msg = &quot;Code is written correctly! :)&quot;
+set(CodHam.msj,'String',msg);
+
+%N1, N2, N4, N8 → paridad →B1, B2, B3, B4
+B1= xor(xor(xor(xor(num2, num4),num8),num10),num14);
+B2= xor(xor(xor(xor(num2,num6),num8),num12),num14);
+B3= xor(xor(num4,num6),num8);
+B4= xor(xor(num10,num12),num14);
+
+writeDigitalPin(a,&quot;d13&quot;,num14); %
+writeDigitalPin(a,&quot;d12&quot;,num12);
+writeDigitalPin(a,&quot;d11&quot;,num10);
+writeDigitalPin(a,&quot;d10&quot;,B4); %
+writeDigitalPin(a,&quot;d9&quot;,num8);
+writeDigitalPin(a,&quot;d8&quot;,num6);
+writeDigitalPin(a,&quot;d7&quot;,num4);
+writeDigitalPin(a,&quot;d6&quot;,B3); %
+writeDigitalPin(a,&quot;d5&quot;,num2);
+writeDigitalPin(a,&quot;d4&quot;,B2); %
+writeDigitalPin(a,&quot;d3&quot;,B1); %
+
+par1= num2str(B1);
+set(CodHam.N1,'String',par1);
+par2= num2str(B2);
+set(CodHam.N2,'String',par2);
+par4= num2str(B3);
+set(CodHam.N4,'String',par4);
+par8= num2str(B4);
+set(CodHam.N8,'String',par8);
+
+dat1 = num2str(num2);%recibe num de dato anterior y convierte a String
+set(CodHam.N3, 'String', dat1);%devuelve num en el text box correspondiente
+dat2 = num2str(num4)
+set(CodHam.N5, 'String', dat2);
+dat3 = num2str(num6)
+set(CodHam.N6, 'String', dat3);
+dat4 = num2str(num8)
+set(CodHam.N7, 'String', dat4);
+dat5 = num2str(num10)
+set(CodHam.N9, 'String', dat5);
+dat6 = num2str(num12)
+set(CodHam.N10, 'String', dat6);
+dat7 = num2str(num14)
+set(CodHam.N11, 'String', dat7);
+
+R1=str2num(dat1);
+R2=str2num(dat2);
+R3=str2num(dat3);
+R4=str2num(dat4);
+R5=str2num(dat5);
+R6=str2num(dat6);
+R7=str2num(dat7);
+
+P1=str2num(par1);
+P2=str2num(par2);
+P4=str2num(par4);
+P8=str2num(par8);
+
+endif</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D1" Position="[168 90 35 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D2" Position="[213 90 34 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D3" Position="[258 90 34 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D4" Position="[303 90 34 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D5" Position="[348 90 34 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D6" Position="[393 90 34 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="D7" Position="[438 90 33 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N1" Position="[50 250 38 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N2" Position="[100 250 38 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N3" Position="[150 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N4" Position="[200 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N5" Position="[250 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N6" Position="[300 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N7" Position="[350 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N8" Position="[400 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N9" Position="[450 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N10" Position="[500 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[1.000 1.000 1.000]" FontAngle="normal" FontName="Arial" FontSize="10" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="N11" Position="[550 250 39 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="editCtrl" BackgroundColor="[0.976 0.957 0.961]" FontAngle="normal" FontName="Consolas" FontSize="9" FontWeight="normal" ForegroundColor="[0.000 0.000 0.000]" GenerateCallBack="false" HorizontalAlignment="center" Name="msj" Position="[94 205 444 22]" String="" TooltipString="">% This code will be executed when the control lost focus and text has 
+% been changed or when press the &quot;enter&quot; key.
+% Por defecto, todos los eventos están desactivdados, para activarlos debe activar
+% la propiead have callback desde el editor de propiedades</uiControl>
+    <uiControl class="textCtrl" BackgroundColor="[0.976 0.957 0.961]" FontAngle="normal" FontName="Consolas" FontSize="13" FontWeight="bold" ForegroundColor="[0.439 0.345 0.486]" GenerateCallBack="false" HorizontalAlignment="center" isAutoSize="true" Name="Label_4" Position="[181 45 276 20]" String="Generador de codigo Hamming" TooltipString=""/>
+</dialog>
