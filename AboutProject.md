@@ -13,7 +13,7 @@ The final result can be seen on the pictures below
 
 Window on PC1:
 
-![image](https://user-images.githubusercontent.com/108900456/206085688-3be312fe-7b2a-4340-a380-ebe7a53d1e64.png)
+On the first pc we have to generate the the 7 bit string: 0101001.
 
 Arduinos:
 
@@ -22,6 +22,17 @@ Arduinos:
 Window on PC2:
 
 ![image](https://user-images.githubusercontent.com/108900456/206085583-48e212e6-14b5-4136-bc21-4b357fc61f49.png)
+
+
+
+
+P.S: In PC1 we forgot to take a screenshot of the interface, but to show prove that it can work fine we'll show another 7 bit number (0110101) that was used in class so we can verify it is correct.
+
+![image](https://user-images.githubusercontent.com/108900456/206089244-74a0b4a8-6fe8-4937-a599-d1354486ff9c.png)
+
+7 bit number to Hamming code in class:
+
+![image](https://user-images.githubusercontent.com/108900456/206089323-9629feac-b7e1-4846-a10e-642c64ec6b57.png)
 
 
 
