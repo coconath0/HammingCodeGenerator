@@ -15,7 +15,7 @@ The final result can be seen on the pictures below
 
 Window on PC1:
 
-On the first pc we have to generate the the 7 bit string: 0101001.
+On the first pc we have to generate the 7 bit string: 0101001.
 
 Arduinos:
 
